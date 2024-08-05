@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-          checkout scm 
+               checkout([$class: 'GitSCM', branches: [[name: '*/main']], userRemoteConfigs: [[url: 'https://github.com/Mohamed289200/petclinic-jenkins.git']]])
                 // Checkout the code from the repository
              
                 //git 'git@github.com:Mohamed289200/petclinic-jenkins.git'
