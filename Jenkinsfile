@@ -1,21 +1,33 @@
 pipeline {
-	agent any
+    agent any
 
-	stages {
-		stage('build') {
-			steps {
-				sh 'sudo docker build -t jenkins-pet .'
-				echo "#####build#####"
-			}
-		}
-		stage('deploy') {
-			steps {
-				echo "####deploy####"
-				sh '''
-					sudo docker compose up -d
-					sudo sleep 20
-					'''
-			}
-		}
-	}
+    stages {
+        stage('Checkout') {
+            steps {
+                // Checkout the code from the repository
+                git 'git@github.com:Mohamed289200/petclinic-jenkins.git'
+            }
+        }
+        stage('Build') {
+            steps {
+                // Build the Docker image
+                sh 'sudo docker build -t jenkins-pet .'
+                echo "##### Build Complete #####"
+            }
+        }
+        stage('Test') {
+            steps {
+                // Run tests (example command)
+                sh 'sudo docker run --rm jenkins-pet ./run-tests.sh'
+                echo "##### Tests Complete #####"
+            }
+        }
+        stage('Deploy') {
+            steps {
+                // Deploy the Docker image (example command)
+                sh 'sudo docker push jenkins-pet'
+                echo "##### Deploy Complete #####"
+            }
+        }
+    }
 }
