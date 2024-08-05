@@ -2,14 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage('Checkout') {
-            steps {
-               checkout([$class: 'GitSCM', branches: [[name: '*/main']], userRemoteConfigs: [[url: 'https://github.com/Mohamed289200/petclinic-jenkins.git']]])
-                // Checkout the code from the repository
-             
-                //git 'git@github.com:Mohamed289200/petclinic-jenkins.git'
-            }
-        }
+       
         stage('Build') {
             steps {
                 // Build the Docker image
