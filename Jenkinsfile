@@ -4,8 +4,10 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
+          checkout scm 
                 // Checkout the code from the repository
-                 //git 'git@github.com:Mohamed289200/petclinic-jenkins.git'
+             
+                //git 'git@github.com:Mohamed289200/petclinic-jenkins.git'
             }
         }
         stage('Build') {
