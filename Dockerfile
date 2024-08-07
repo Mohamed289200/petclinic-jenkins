@@ -2,7 +2,7 @@ FROM openjdk:17-alpine AS build
 
 WORKDIR /app
 
-COPY ..
+COPY . .
 
 RUN ./mvnw package
 
