@@ -2,7 +2,7 @@ FROM openjdk:17-alpine AS build
 
 WORKDIR /app
 
-COPY spring-petclinic .
+COPY ..spring-petclinic .
 
 RUN ./mvnw package
 
